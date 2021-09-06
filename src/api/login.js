@@ -11,6 +11,12 @@ const login_api = async (user) => {
       if (res.data.statusCode === 400) {
         localStorage.setItem("login_error", res.data.message);
       } else {
+        if (user.username === "technician") {
+          localStorage.setItem("technician", true);
+        } else {
+          localStorage.setItem("technician", false);
+        }
+
         localStorage.setItem("usertoken", res.data.data);
         localStorage.removeItem("login_error");
       }

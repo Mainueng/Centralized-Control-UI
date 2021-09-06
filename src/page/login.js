@@ -32,6 +32,7 @@ const Login = () => {
       .then((res) => {
         if (res) {
           setError("");
+
           localStorage.removeItem("login_error");
           localStorage.setItem("usertoken", res.token);
 
@@ -44,12 +45,12 @@ const Login = () => {
         setError("Login Fail: " + err);
       });
 
-    if (localStorage.usertoken) {
+    if (localStorage.usertoken && localStorage.usertoken !== undefined) {
       history.push("/control");
     }
   };
 
-  if (localStorage.usertoken) {
+  if (localStorage.usertoken && localStorage.usertoken !== undefined) {
     return <Redirect to="/control" />;
   }
 

@@ -32,6 +32,7 @@ const Nav = () => {
 
   const logout = () => {
     localStorage.removeItem("usertoken");
+    localStorage.removeItem("technician");
     history.push("/");
   };
 
@@ -172,8 +173,12 @@ const Nav = () => {
           </ul>
         </li>
       </ul>
-      <div className="navigation">Setting</div>
-      <ul className="in menu">
+      <div
+        className={localStorage.technician === "true" ? "d-none" : "navigation"}
+      >
+        Setting
+      </div>
+      <ul className={localStorage.technician === "true" ? "d-none" : "in menu"}>
         <li>
           <Link
             to={{
@@ -263,16 +268,24 @@ const Nav = () => {
           </ul>
         </li>
       </ul>
-      <div className="navigation">Schedule</div>
-      <ul className="in menu">
+      <div
+        className={localStorage.technician === "true" ? "d-none" : "navigation"}
+      >
+        Schedule
+      </div>
+      <ul className={localStorage.technician === "true" ? "d-none" : "in menu"}>
         <li>
           <Link to="/schedule">
             <span className="ms-3">Schedule List</span>
           </Link>
         </li>
       </ul>
-      <div className="navigation">Report</div>
-      <ul className="in menu">
+      <div
+        className={localStorage.technician === "true" ? "d-none" : "navigation"}
+      >
+        Report
+      </div>
+      <ul className={localStorage.technician === "true" ? "d-none" : "in menu"}>
         <li>
           <a
             href={"#report_1"}
@@ -375,7 +388,7 @@ const Nav = () => {
           </ul>
         </li>
       </ul>
-      <div className="navigation">Maintenance</div>
+      {/* <div className="navigation">Maintenance</div>
       <ul className="in menu">
         <li>
           <Link to="/maintenance_indoor">
@@ -387,7 +400,7 @@ const Nav = () => {
             <span className="ms-3">Maintenance Outdoor</span>
           </Link>
         </li>
-      </ul>
+      </ul> */}
       <ul className="in menu"></ul>
       <div className="logout pointer" onClick={() => logout()}>
         Logout
